@@ -9,3 +9,5 @@ Programming Language : Spring Boot and Microservices, Java
 
 Database: Oracle DB
 
+TO DO:
+Front End : Angular (Yet to Be Implemented)
