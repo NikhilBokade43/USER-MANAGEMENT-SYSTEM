@@ -1,0 +1,438 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "Api Documentation",
+		"version": "1.0",
+		"title": "Api Documentation",
+		"termsOfService": "urn:tos",
+		"contact": {
+			
+		},
+		"license": {
+			"name": "Apache 2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0"
+		}
+	},
+	"host": "localhost:9090",
+	"basePath": "/",
+	"tags": [
+		{
+			"name": "forgot-password-controller",
+			"description": "Forgot Password Controller"
+		},
+		{
+			"name": "login-rest-controller",
+			"description": "Login Rest Controller"
+		},
+		{
+			"name": "unlock-rest-controller",
+			"description": "Unlock Rest Controller"
+		},
+		{
+			"name": "user-reg-controller",
+			"description": "User Reg Controller"
+		}
+	],
+	"paths": {
+		"/cities/{stateCode}": {
+			"get": {
+				"tags": [
+					"user-reg-controller"
+				],
+				"summary": "getCities",
+				"operationId": "getCitiesUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "stateCode",
+						"in": "path",
+						"description": "stateCode",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object",
+							"additionalProperties": {
+								"type": "string"
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/countries": {
+			"get": {
+				"tags": [
+					"user-reg-controller"
+				],
+				"summary": "getCountries",
+				"operationId": "getCountriesUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object",
+							"additionalProperties": {
+								"type": "string"
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/email/{emailId}": {
+			"get": {
+				"tags": [
+					"user-reg-controller"
+				],
+				"summary": "emailCheck",
+				"operationId": "emailCheckUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "emailId",
+						"in": "path",
+						"description": "emailId",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/forgotpassword/{emailId}": {
+			"get": {
+				"tags": [
+					"forgot-password-controller"
+				],
+				"summary": "forgotPassword",
+				"operationId": "forgotPasswordUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "emailId",
+						"in": "path",
+						"description": "emailId",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/login": {
+			"post": {
+				"tags": [
+					"login-rest-controller"
+				],
+				"summary": "login",
+				"operationId": "loginUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "form",
+						"description": "form",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/LoginForm"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/register": {
+			"post": {
+				"tags": [
+					"user-reg-controller"
+				],
+				"summary": "userReg",
+				"operationId": "userRegUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "regForm",
+						"description": "regForm",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/RegForm"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/states/{countryCode}": {
+			"get": {
+				"tags": [
+					"user-reg-controller"
+				],
+				"summary": "getStates",
+				"operationId": "getStatesUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "countryCode",
+						"in": "path",
+						"description": "countryCode",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object",
+							"additionalProperties": {
+								"type": "string"
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		},
+		"/unlockAccount": {
+			"post": {
+				"tags": [
+					"unlock-rest-controller"
+				],
+				"summary": "unlockUserAccount",
+				"operationId": "unlockUserAccountUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "form",
+						"description": "form",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/UnlockForm"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"LoginForm": {
+			"type": "object",
+			"properties": {
+				"email": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				}
+			},
+			"title": "LoginForm"
+		},
+		"RegForm": {
+			"type": "object",
+			"properties": {
+				"cityCode": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"countryCode": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"dob": {
+					"type": "string",
+					"format": "date"
+				},
+				"email": {
+					"type": "string"
+				},
+				"firstName": {
+					"type": "string"
+				},
+				"gender": {
+					"type": "string"
+				},
+				"lastname": {
+					"type": "string"
+				},
+				"phno": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"stateCode": {
+					"type": "integer",
+					"format": "int32"
+				}
+			},
+			"title": "RegForm"
+		},
+		"UnlockForm": {
+			"type": "object",
+			"properties": {
+				"confirmPass": {
+					"type": "string"
+				},
+				"emailId": {
+					"type": "string"
+				},
+				"newPass": {
+					"type": "string"
+				},
+				"tempPass": {
+					"type": "string"
+				}
+			},
+			"title": "UnlockForm"
+		}
+	}
+}

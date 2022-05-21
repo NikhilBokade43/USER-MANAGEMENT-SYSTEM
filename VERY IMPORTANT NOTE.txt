@@ -1,0 +1,21 @@
+1) for swagger documentation the spring boot version should be 2.4.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
